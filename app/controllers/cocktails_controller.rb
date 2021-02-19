@@ -1,10 +1,14 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show]
+
   def index
     @cocktails = Cocktail.all
   end
 
   def show
+    @cocktail = Cocktail.find(params[:id])
+    # if @cocktail.nil?
+    #   redirect_to action: :index
+    # end
   end
 
   def new
@@ -12,10 +16,5 @@ class CocktailsController < ApplicationController
   end
 
   def create
-  end
-
-  private
-  def set_cocktail
-    @cocktail = Cocktail.find(params[:id])
   end
 end
